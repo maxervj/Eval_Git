@@ -2,6 +2,7 @@ package com.example.valuationgit_android;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TournoiManager {
     private List<Equipe> equipes = new ArrayList<>();
@@ -22,5 +23,6 @@ public class TournoiManager {
     public List<Match> getMatchs() {
         return matchs;
     }
+
 }
 
