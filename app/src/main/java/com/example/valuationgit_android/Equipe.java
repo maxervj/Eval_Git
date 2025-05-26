@@ -22,4 +22,5 @@ public class Equipe {
         return nom + " (" + ville + ")";
     }
 
+
 }

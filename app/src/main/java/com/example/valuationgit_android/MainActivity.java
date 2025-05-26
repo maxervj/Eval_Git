@@ -8,12 +8,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -83,5 +84,45 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnAdd3Equipe2).setOnClickListener(v -> ajouterPoints(3, false));
         finMatchButton.setOnClickListener(v -> terminerMatch());
     }
+    private void ajouterEquipe() {
+        String nom = editNomEquipe.getText().toString().trim();
+        String ville = editVilleEquipe.getText().toString().trim();
+
+        if (!nom.isEmpty() && !ville.isEmpty()) {
+            Equipe equipe = new Equipe(nom, ville);
+            tournoiManager.ajouterEquipe(equipe);
+            equipeAdapter.notifyDataSetChanged();
+            Toast.makeText(this, "Équipe ajoutée !", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void ajouterMatch() {
+        Equipe e1 = (Equipe) spinnerEquipe1.getSelectedItem();
+        Equipe e2 = (Equipe) spinnerEquipe2.getSelectedItem();
+        String date = editDate.getText().toString();
+        String lieu = editLieu.getText().toString();
+
+        if (e1 != null && e2 != null && !e1.equals(e2) && !date.isEmpty() && !lieu.isEmpty()) {
+            Match match = new Match(e1, e2, date, lieu);
+            tournoiManager.ajouterMatch(match);
+            matchAdapter.notifyDataSetChanged();
+            Toast.makeText(this, "Match ajouté !", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Veuillez saisir des équipes différentes et toutes les infos.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void afficherScores() {
+        if (matchEnCours != null) {
+            scoreEquipe1Text.setText(String.valueOf(matchEnCours.getScoreEquipe1()));
+            scoreEquipe2Text.setText(String.valueOf(matchEnCours.getScoreEquipe2()));
+        }
+    }
+    private void terminerMatch() {
+        if (matchEnCours != null && !matchEnCours.isTermine()) {
+            matchEnCours.terminerMatch();
+            Toast.makeText(this, "Match terminé !", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 }
