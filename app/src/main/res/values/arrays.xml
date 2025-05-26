@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="matchs_array">matchs_array</string-array>
+    <string-array name="equipes_array">equipes_array</string-array>
+</resources>

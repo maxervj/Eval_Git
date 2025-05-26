@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="primary">#3DDC84</color>
+    <color name="primary_dark">#3DDC84</color>
+    <color name="primary_light">#3DDC84</color>
+    <color name="accent">#FF4081</color>
+    <color name="orange">#FF9800</color>
+    <color name="team_yellow">#FFD700</color> <!-- Or plus élégant -->
 </resources>

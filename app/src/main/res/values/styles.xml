@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Team1Style">
+        <item name="android:background">@color/team_yellow</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:elevation">2dp</item>
+    </style>
+</resources>
